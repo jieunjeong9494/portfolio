@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--sql이 어떻게 만들어질지 설정하는 부분 -->
+<mapper namespace="Pension.GrandPension.board.mapper.BoardMapper">
+    <!-- 게시글 목록 조회 -->
+    <select id="list" resultType="Board">
+        SELECT *
+        FROM board
+        ORDER BY board_no DESC, reg_date DESC
+    </select>
+    <!-- 게시글 추가 -->
+    <insert id="create" parameterType="Board">
+    <!--() db의 컬럼, 즉 db 이름명이 똑같아야한다-->
+        INSERT INTO board  ( title, writer, content, image_name )
+    <!-- #{}위에 있는 db의 컬럼에 어떤 값을 저장할지 지시, 자바 변수랑 같은 이름-->
+        VALUES ( #{title}, #{writer}, #{content}, #{imageName} )
+    </insert>
+    <!-- 게시글 읽기 -->
+    <select id="read" resultType="Board">
+        SELECT *
+        FROM board
+        WHERE board_no = #{board_no}
+    </select>
+
+     <!-- 게시글 수정
+
+	주소는 아니고 조건으로 검색하는 건데 boardNo인 게시글을 찾아서 수정하겠다 -->
+    <update id="update">
+        UPDATE 	board
+        SET
+        title = #{title},
+        content = #{content},
+        writer = #{writer},
+        image_name = #{imageName}
+        WHERE  board_no = #{boardNo}
+    </update>
+
+    <delete id="delete">
+        DELETE
+        FROM board
+        WHERE board_no = #{boardNo}
+    </delete>
+
+    <select id="search" resultType="Board">
+        <![CDATA[
+			SELECT *
+			FROM board
+			WHERE board_no > 0
+			AND   (
+						title LIKE CONCAT('%', #{keyword}, '%')
+					OR	writer LIKE CONCAT('%', #{keyword}, '%')
+					OR  content LIKE CONCAT('%', #{keyword}, '%')
+				  )
+			ORDER BY board_no DESC
+					,reg_date DESC
+		]]>
+    </select>
+
+    <select id="totalRows" resultType="int">
+        SELECT COUNT(*) as totalRows
+        FROM board
+    </select>
+
+    <!-- 페이징 게시글 목록 조회 -->
+    <select id="listWithPage" resultType="board">
+        <!--db에 있는 rowno 1은 0이다 //유저한테는 1 -->
+        <!-- 1.startrowindex 가 @rownum -->
+        <!-- 2.@rownum 1씩 넣은 걸, row_no에 넣은 것-->
+        <![CDATA[
+			SELECT @rownum := @rownum+1 row_no, b.*
+			FROM (
+					SELECT @rownum := #{startRowIndex}
+					FROM dual
+				 ) tmp
+				 ,board b
+			ORDER BY board_no DESC,
+			 		 reg_date DESC
+			LIMIT #{startRowIndex}, #{rowsPerPage}
+		]]>
+    </select>
+
+</mapper>

@@ -1,0 +1,16 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Logout</title>
+</head>
+<body>
+<h2>로그아웃</h2>
+
+<form action="loginForm.html" th:action="@{/auth/logout}" method="post">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+    <button>로그아웃</button>
+</form>
+</body>
+</html>

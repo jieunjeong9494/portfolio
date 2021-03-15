@@ -1,0 +1,62 @@
+
+*{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+
+}
+
+
+body {
+  height: 100vh;
+
+}
+
+
+.header{
+
+  display: flex;
+  justify-content: center;
+
+  margin-top:20px;
+
+  }
+
+
+/* 메뉴 */
+
+ul{
+  list-style-type: none;
+  float: right;
+  margin: 50px;
+  padding : 25px;
+}
+
+ul li{
+  display: inline-flex;
+}
+
+ul li a{
+  text-decoration: none;
+  color: #2f3542;
+  font-weight: bold;
+  padding: 3px 30px;
+  border-radius: 5px;
+  transition:0.5s ease;
+  z-index: 10;
+
+}
+
+ul li a:hover{
+  background-color: #f1f2f6aa;
+  color: #2f3542;
+}
+
+
+/* 로고 */
+.logo{
+  float: left;
+  margin: 30px;
+
+}

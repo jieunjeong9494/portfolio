@@ -1,0 +1,125 @@
+
+*{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+
+}
+
+
+body {
+  height: 100vh;
+
+}
+
+.header{
+
+  display: flex;
+  justify-content: center;
+
+  margin-top:20px;
+
+  }
+
+
+
+/* 메뉴 */
+
+ul{
+  list-style-type: none;
+  float: right;
+  margin: 50px;
+  padding : 25px;
+}
+ul li{
+  display: inline-flex;
+}
+
+ul li a{
+  text-decoration: none;
+  color: #2f3542;
+  font-weight: bold;
+  padding: 3px 30px;
+  border-radius: 5px;
+  transition:0.5s ease;
+  z-index: 10;
+
+}
+
+ul li a:hover{
+  background-color: #f1f2f6aa;
+  color: #2f3542;
+}
+
+.header{
+  max-width: 1400px;
+  margin: auto;
+}
+
+
+/* 로고 */
+.logo{
+  float: left;
+  margin: 30px;
+
+}
+
+
+.masterhead{
+
+background: url('https://images.unsplash.com/photo-1533423996375-f914ab160932?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1588&q=80') no-repeat center center;
+    background-size: contain;
+    background-size: cover;
+    padding-top: 20rem;
+    padding-bottom: 20rem;
+    background-color: #343a40;
+    border-radius: 6px;
+    width: auto;
+    height: 400px;
+
+}
+
+.masterhead .lead1-register {
+
+    font-size: 63px;
+    font-weight: bolder;
+
+}
+
+.masterhead .lead2-register {
+    margin-bottom: 20px;
+        font-size: 21px;
+        font-weight: 300;
+        line-height: 1.4;
+}
+
+
+/*form 꾸미기*/
+
+#register-form{
+padding-top: 100px;
+padding-bottom: 10rem;
+    }
+
+/*table */
+
+table {
+        width: 100%;
+      }
+
+td {
+padding: 5px;
+            }
+
+.table-title{
+border-bottom: solid 1px #adb5bd;
+padding-bottom: 5px;
+color:#323232;
+
+}
+
+
+
+
+

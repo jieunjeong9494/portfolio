@@ -1,0 +1,43 @@
+
+.master{
+
+background:url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1353&q=80') no-repeat center center;
+     background-size: contain;
+       background-size: cover;
+    padding-top: 20rem;
+    padding-bottom: 20rem;
+    background-color: #343a40;
+    border-radius: 6px;
+    width: auto;
+    height: 400px;
+
+
+                                                                                                                                                                                   }
+}
+
+.master .lead1-list {
+
+    font-size: 63px;
+    font-weight: bolder;
+
+}
+
+.master .lead2-list {
+    margin-bottom: 20px;
+        font-size: 21px;
+        font-weight: 300;
+        line-height: 1.4;
+}
+
+
+
+
+/*본문*/
+
+.container{
+  margin-top: 20px;
+}
+
+
+
+

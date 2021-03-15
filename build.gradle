@@ -1,0 +1,46 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.1'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'Pension'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'mysql:mysql-connector-java'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	//레이아웃 다이렉트
+	implementation group: 'nz.net.ultraq.thymeleaf', name: 'thymeleaf-layout-dialect'
+
+	//타임리프 클라스 없다고 나옴. 의존성 추가
+	implementation group: 'org.springframework.security', name: 'spring-security-core'
+	// 타임리프 엑스트라 라이브러리 추가
+	implementation group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-springsecurity5'
+	// 타임리프 태그 라이브러리 추가
+	implementation group: 'org.springframework.security', name: 'spring-security-taglibs'
+	//implementation group: 'org.springframework.security', name: 'spring-security-taglibs', version: '5.4.5'
+
+}
+
+test {
+	useJUnitPlatform()
+}
