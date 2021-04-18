@@ -1,11 +1,15 @@
 package Pension.GrandPension.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.sql.DataSource;
 
@@ -16,7 +20,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     //db랑 연결해주는거
     @Autowired
-    DataSource dataSource;
+    private UserDetailsService userDetailsService;
+
+    //*넘겨준 encoder를 스프링이 관리
+    @Bean
+    public PasswordEncoder encoder(){
+        return new BCryptPasswordEncoder();
+    }
+
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -29,9 +41,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().httpBasic();
     }
 
+    //customize하려고 만든거
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-       auth.jdbcAuthentication().dataSource(dataSource);
+
+      auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
 
          }
 }

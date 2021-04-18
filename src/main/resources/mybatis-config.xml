@@ -12,5 +12,6 @@
 
     <typeAliases>
         <package name="Pension.GrandPension.board.dto"/>
+        <package name="Pension.GrandPension.user.dto"/>
     </typeAliases>
 </configuration>

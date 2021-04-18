@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--sql이 어떻게 만들어질지 설정하는 부분 -->
+<mapper namespace="Pension.GrandPension.user.mapper.UserMapper">
+   <!--username으로 유저 조회 -->
+    <select id = "findByUserName" resultType="User">
+        SELECT *
+        FROM user
+        WHERE username = #{username}
+    </select>
+
+
+</mapper>
