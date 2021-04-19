@@ -1,5 +1,4 @@
 package Pension.GrandPension.security;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,8 +27,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         //요청 (받는 상태에 따라 달라야함)
@@ -38,14 +35,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/board/list").access("hasRole('ROLE_USER')")
                 .antMatchers("/","/**").access("permitAll")
                 //로그인 팝업
-                .and().httpBasic();
+                .and()
+                .formLogin().loginPage("/login");
     }
 
     //customize하려고 만든거
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-      auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
+      auth.userDetailsService(userDetailsService).passwordEncoder(encoder());
 
          }
 }

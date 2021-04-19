@@ -21,6 +21,15 @@ public class User implements UserDetails {
     private String fullname;
     private String phoneNumber;
 
+    public User(String username, String password,String fullname , String phoneNumber ){
+
+        this.username = username;
+        this.password = password;
+        this.fullname = fullname;
+        this.phoneNumber = phoneNumber;
+
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));

@@ -10,5 +10,10 @@
         WHERE username = #{username}
     </select>
 
+    <insert id="registerUser" parameterType="User">
+        insert into user(username, password, fullname, phoneNumber)
+        values (#{username}, #{password}, #{fullname}, #{phoneNumber})
+    </insert>
+
 
 </mapper>

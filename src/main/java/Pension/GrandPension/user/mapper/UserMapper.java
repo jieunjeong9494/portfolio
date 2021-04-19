@@ -8,5 +8,6 @@ public interface UserMapper {
 
     User findByUserName(String username);
 
+    void registerUser(User user);
 
 }
